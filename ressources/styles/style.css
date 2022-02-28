@@ -1,0 +1,770 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+:root{
+    --blue: #287bff;
+    --white: #fff;
+    --grey : #f5f5f5 ;   
+    --black1 : #222;
+    --black2 : #999;
+}
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.container1{
+    position: relative;
+    width: 100%;    
+}
+.nav{
+    position: fixed;
+    width: 250px;
+    left: 0;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+    z-index: 1000;
+}
+.nav.active{
+    width: 68px;
+}
+.nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 0;
+}
+.nav ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px ;
+    border-bottom-left-radius: 30px ;
+
+}
+.nav ul li.active{
+    background: var(--white);
+}
+.nav ul li:hover{
+    background: var(--white);
+}
+.nav ul li:nth-child(1){
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+.nav ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+.nav ul li:hover a{
+    color: var(--blue);
+}
+.nav ul li.active a{
+    color: var(--blue);
+}
+.nav ul li a .icon {
+    position: relative;
+    display: block;
+    min-height: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+    padding: 0 10px;
+}
+.nav ul li a .icon ion-icon{
+    font-size: 1.75em;
+}
+.nav ul li a .titre {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+}
+.nav ul li:hover a::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+.nav ul li:hover a::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+.nav ul li.active a::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+.nav ul li.active a::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+.topBarNew{
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--blue);
+    z-index: 10000;
+    background: var(--white) ;
+    transition: 0.5s;
+
+}
+.topBarNew.active{
+    left: 68px;
+    width: calc(100% - 68px);
+}
+.topBarNew .toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    cursor: pointer;
+    z-index: 10001;
+}
+.topBarNew .toggle ion-icon{
+    padding: 0 10px;
+}
+.topBarNew .accountObj{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    cursor: pointer;
+    width: 150px;
+    position: relative;
+    z-index: 10002;
+}
+.topBarNew .accountObj .accountImg {
+    position: relative;
+    height: 50px;
+    width: 50px;
+    
+    border-radius: 50%;
+    overflow: hidden;
+}
+.topBarNew .accountObj .accountImg img {
+     
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+  .menuDeroulant {
+    
+    background: var(--blue);
+    position:fixed;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    right: 0;
+    top: -160px;
+    width: 160px;
+    height: 160px;
+    transition: 0.5s;
+    cursor:auto;
+    z-index: 500;
+   
+}
+
+.menuDeroulant.active{
+    top: 60px;
+    
+   
+}
+.menuDeroulant ul{
+    padding-left: 0;
+}
+  .menuDeroulant ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-right-radius: 30px ;
+    border-bottom-right-radius: 30px ;
+}
+  .menuDeroulant ul li:hover{
+    background: var(--white);
+}
+  .menuDeroulant ul li a{
+    position: relative;
+    display: flex;
+    color: var(--white);
+    text-decoration: none;
+    width: 100%;
+    font-size: 0.9em;
+}
+  .menuDeroulant ul li a:hover{
+    color: var(--blue);
+}
+  .menuDeroulant ul li a .icon{
+    position: relative;
+    min-height: 30px;
+    text-align: center;
+    line-height: 40px;
+    padding: 5px 10px;
+}
+  .menuDeroulant ul li a .titre{
+    position: relative;
+    min-height: 30px;
+    text-align: center;
+    line-height: 40px;
+    padding: 5px 5px;
+    white-space: nowrap;
+}
+.dashboard.getOut{
+    display: none;
+}
+.dashboard{
+    position: absolute;
+    display: block;
+    /* overflow: hidden; */
+    width: calc(100% - 250px);
+    height: 100%;
+    top: 60px;
+    left: 250px;
+    transition: 0.5s;
+   
+    
+
+}
+.dashboard.active{
+    width: calc(100% - 68px);
+    left: 68px;
+}
+.dashboard .cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    gap: 30px;
+
+}
+.dashboard .cards .resume{
+    position: relative;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+}
+.dashboard .cards .resume .qt{
+    font-weight: 500;
+    color: var(--blue);
+    font-size: 2.5em;
+}
+.dashboard .cards .resume .denom{
+    font-size: 0.8em;
+    color: var(--black2);
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.dashboard .cards .resume .icon{
+    font-size: 3em;
+    color: var(--black2);
+}
+.dashboard .cards .resume:hover{
+    background: var(--blue);
+}
+.dashboard .cards .resume:hover .denom,
+.dashboard .cards .resume:hover .icon,
+.dashboard .cards .resume:hover .qt{
+    color: var(--white);
+}
+.dashboard .detail  {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    
+}
+.dashboard .detail.user  {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+.dashboard .detail.user .recentActivity{
+    position: relative;
+    width: 70%;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    padding: 20px;
+}
+.dashboard .detail .recentActivity{
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    padding: 20px;
+}
+.dashboard .detail .recentActivity .textUp{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+.dashboard .detail .recentActivity .textUp .texte{
+    position: relative;
+    color: var(--blue);
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+.dashboard .detail .recentActivity .textUp .showAll a{
+    text-decoration: none;
+    padding: 5px  10px;
+    color: var(--white);
+    background: var(--blue);
+    border-radius: 6px;
+    
+}
+.dashboard .detail .recentActivity table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.dashboard .detail .recentActivity table tr{
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.dashboard .detail .recentActivity table tbody tr:hover{
+    color: var(--white);
+    background: var(--blue);
+}
+.dashboard .detail .recentActivity table tbody tr td{
+padding: 5px 0;
+text-align: center;
+}
+.dashboard .detail .recentActivity table th {
+    text-align: center;
+}
+.dashboard .detail .recentActivity table tbody tr td:last-child,
+.dashboard .detail .recentActivity table th:last-child
+{
+text-align: end;
+}
+.dashboard .detail .recentUser {
+    position: relative;
+    padding: 30px 20px;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+    background: var(--white);
+    margin: 0 20px;
+}
+.dashboard .detail .recentUser .resume .qt{
+    font-weight: 500;
+    color: var(--blue);
+    font-weight: 600;
+}
+.dashboard .detail .recentUser .resume .denom{
+    font-size: 0.8em;
+    color: var(--black2);
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.dashboard .detail .recentUser  .user {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+}
+.dashboard .detail .recentUser  .user:hover {
+    background: var(--blue);
+    color: var(--white);
+    border-radius: 10px;
+}
+.dashboard .detail .recentUser  .user:hover .userInfo .mail{
+    color: var(--white);
+}
+.dashboard .detail .recentUser  .user .photo{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+.dashboard .detail .recentUser  .user .photo img{
+    object-fit: cover;
+    width: 100%;
+}
+.dashboard .detail .recentUser  .user .userInfo{
+    padding: 0 10px;
+}
+.dashboard .detail .recentUser  .user .userInfo .pseudo{
+    font-weight: 600; 
+    font-size: 0.8em;
+}
+.dashboard .detail .recentUser  .user .userInfo .mail{
+    font-weight: 200; 
+    font-size: 0.7em;
+    padding-top: 5px;
+    color: var(--black2);
+}
+/* Profile Edit */
+.dashboard .card-body{
+    background: var(--white);
+}
+.dashboard .col-xl-8 {
+width: 100%;
+display: flex;
+justify-content: center;
+padding: 20px;
+}
+.dashboard .col-xl-8 .card{
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 7px 25px rgba(0, 0, 0, 0.08);
+}
+.dashboard .col-xl-8 h3{
+    color: var(--blue);
+}
+.dashboard .card-body{
+    display: flex;
+    justify-content: center;
+}
+.dashboard .card-body .photoUser{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.dashboard .card-body .photoUser img{
+    width: 100%;
+    object-fit: cover;
+}
+.dashboard .card-body .photoMaster{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 0 40px;
+}
+.dashboard .card-body .btnGroup{
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.dashboard .card-body .btnGroup2{
+    padding: 20px 0;
+    display: flex;
+    padding-right: 100px;
+    justify-content: center;
+    align-items: center;
+}
+/* Page Edit All users Admin */
+.dashboard .editAllUsers{
+   display: flex;
+   justify-content: center;
+   
+    
+}
+.dashboard .editAllUsers .detail{
+    display: block;
+    width: 90%;
+}
+.dashboard .editAllUsers .detail .photoUser{
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+}
+.dashboard .editAllUsers .detail .photoUser img{
+    width: 100%;
+    object-fit: cover;
+}
+.buttonGroupUserEdit{
+    display: flex;
+    justify-content: center;
+}
+.buttonGroupUserEdit .btn{
+    margin: 5px 20px;
+}
+/* popup edit user */
+.editUserPopup{
+    
+    position: absolute;
+    transform: scale(0);
+    opacity: 0;
+    
+    transition: 0.5s;
+}
+.editUserPopup.visible{
+    
+    transform: scale(1);
+    transition: 0.5s;
+    opacity: 1;
+    
+}
+.quizz.hidden{
+    display: none;
+}
+.quizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    padding-bottom: 30px; 
+    border-radius: 20px;   
+    position: relative;
+    height: 100vh;
+}
+.quizzForm{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    
+}
+.quizz #pCurrentQ1{
+    position: absolute;
+    bottom: -15px;
+    
+}
+.pageResultat.hidden{
+    display: none;
+}
+.pageResultat{
+    position: absolute;
+    display: block;
+    top : 60px;
+    left: 20vw;
+}
+.themeChoose{
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    
+}
+.themeChoose.hidden{
+    display:none;
+}
+.allBoxes{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    cursor: pointer;
+    
+}
+
+
+.themeBox{
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 0.5s;
+    border: 1px solid var(--blue);
+    border-radius: 20px;
+}
+.themeBox:hover{
+    transform: scale(115%);
+}
+.themeBox .themeBoxImg {
+    display: relative;
+    overflow: hidden;
+   
+}
+.themeBox .themeBoxImg img{
+    width: 100%;
+    height: 100%;
+}
+.themeBox p{
+    text-transform: uppercase;
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+}
+/* body{
+    overflow: hidden;
+} */
+.errorMsg{
+    color: crimson;
+   
+}
+.topBar{
+    
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 70px  ;
+    color: blanchedalmond;
+    
+}
+.topBar p{
+    position: relative;
+    padding-top :10px ;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.topBar p:first-child:hover{
+    transform: scale(110%);
+}
+.myAccount{
+    position:absolute ;
+    background-color: black;
+    transition: 0.5s;
+    top : 60px;
+    left: 0;
+    width: 20vw;
+    height: calc(100vh);
+    cursor: pointer;
+
+}
+.myAccount.hidden{
+    position:absolute ;
+    background-color: black;
+    transition: 0.5s;
+    top : 60px;
+    left: -30vw;
+    width: 20vw;
+    height: calc(100vh);
+    cursor: pointer;    
+}
+.myAccountInfo{
+    padding-left: 20px;
+}
+.pageLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    transition: 0.5s;
+}
+.pageLogin.toDown{
+    transform: translateY(150vh);
+}
+.pageLogin.getOut{
+    display: none;
+}
+.login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    
+    transition: 1s;
+}
+.login.hidden{
+    transform: translateX(100vw);
+     
+ }
+
+ 
+  .register{
+    /* display: flex;
+    justify-content: center;
+    
+    align-items: center; */
+    min-height: 300px;
+    min-width: 600px;
+   
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    position: absolute;
+    padding-top: 10px;
+    
+    transition: 1s;
+  }
+
+  .register.hidden{
+    transform: translateX(-100vw);
+     
+ }
+ #forError{
+     display: flex;
+     height: 30px;
+     position:relative;
+     top: 0;
+     justify-content: center;
+     box-sizing: border-box;
+ }
+ .regForm{
+     display: flex;
+     gap: 20px;
+     justify-content: center;
+     align-items: center;
+     }
+ .btnReg{
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     margin: 20px;
+ }
+ .pageAjoutQ{
+     position: absolute;
+     bottom:100vh;
+     transition: 0.5s;
+     display: flex;
+     justify-content: center;
+     flex-direction: column;
+
+ }
+ .pageAjoutQ.toDown{
+    bottom: 20vh ;
+ }
