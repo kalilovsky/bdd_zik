@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../index.php?currentPage=home">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
@@ -57,18 +57,18 @@
             <ion-icon name="menu-outline"></ion-icon>
         </div>
         <div class="searchBar">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <select class="form-select w-25" aria-label="Default select example">
-                <option selected>Tous</option>
-                <option value="1">Genre</option>
-                <option value="2">Titre</option>
-                <option value="3">Auteur</option>
-            </select>
-                <button class="btn btn-primary" type="submit">Search</button>
-                
+            <form class="d-flex" method="post" action="../index.php?currentPage=search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+                <select class="form-select w-25" aria-label="Default select example" name="critere">
+                    <option value="all" selected>Tous</option>
+                    <option value="genre">Genre</option>
+                    <option value="titre">Titre</option>
+                    <option value="auteur">Auteur</option>
+                </select>
+                <button class="btn btn-secondary" type="submit">Search</button>
+
             </form>
-            
+
 
         </div>
 
@@ -101,7 +101,7 @@
                 </a>
             </li>
             <li>
-                <a class="button" href="../model/disconnect.php" data-info="disconnect">
+                <a class="button1" href="../model/disconnect.php" data-info="disconnect">
                     <span class="icon">
                         <ion-icon name="log-out-outline"></ion-icon>
 

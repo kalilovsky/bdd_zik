@@ -2,7 +2,7 @@
 function dbConnect()
 {
     try {
-        $db = new PDO('mysql:host=192.168.1.34;dbname=projet_zik_khan;charset=utf8', 'khalil', 'root');
+        $db = new PDO('mysql:host=localhost;dbname=projet_zik_khan;charset=utf8', 'khalil', 'root');
         return $db;
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
@@ -24,7 +24,7 @@ function verifUser(){
         $_SESSION["lastname"] = $resultSql["lastname"];
         $_SESSION["photo"] = $resultSql["photo"];
         $_SESSION["iduser"] = $resultSql["idUser"];
-        
+        $_SESSION["currentPage"]="home";
      }else{
          $_SERVER["erreur"] = "Email ou mot de passe erroné";
      }
@@ -50,6 +50,7 @@ function registerUser(){
     $_SESSION["lastname"] = $_POST["prenom"];
     $_SESSION["photo"] = "default";
     $_SESSION["idUser"] = $resultSql["idUser"];
+    $_SESSION["currentPage"]="home";
     } else {
         $_SERVER["erreur"] = "Utilisateur déja présent.";
     }
@@ -60,6 +61,56 @@ function registerUser(){
 function loadCategory(){
     $db = dbConnect();
     $selectSql = "SELECT * FROM genre";
+    $querySql = $db->query($selectSql);
+    $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
+    return $resultSql;
+}
+
+
+function showByGenre(){
+    $result = loadByGenre();
+    return $result;
+}
+function loadByGenre(){
+    $db = dbConnect();
+    $selectSql = "SELECT idMusic,title,Genre,auteur FROM music INNER JOIN genre ON music.idGenre=genre.idGenre WHERE music.idGenre = {$_SESSION["selectedGenre"]}";
+    $querySql = $db->query($selectSql);
+    $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
+    return $resultSql;
+}
+
+function searchByTitle(){
+    $db = dbConnect();
+    $keyword = "%".$_SESSION["keyword"]."%";
+    $keyword = $db->quote($keyword);
+    $selectSql = "SELECT idMusic,title,Genre,auteur FROM music INNER JOIN genre ON music.idGenre=genre.idGenre WHERE title LIKE {$keyword}";
+    $querySql = $db->query($selectSql);
+    $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
+    return $resultSql;
+}
+function searchByAuthor(){
+    $db= dbConnect();
+    $keyword = "%".$_SESSION["keyword"]."%";
+    $keyword = $db->quote($keyword);
+    $selectSql = "SELECT idMusic,title,Genre,auteur FROM music INNER JOIN genre ON music.idGenre=genre.idGenre WHERE auteur LIKE {$keyword}";
+    $querySql = $db->query($selectSql);
+    $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
+    return $resultSql;
+}
+function searchByGenre(){
+    $db= dbConnect();
+    $keyword = "%".$_SESSION["keyword"]."%";
+    $keyword = $db->quote($keyword);
+    $selectSql = "SELECT idMusic,title,Genre,auteur FROM music INNER JOIN genre ON music.idGenre=genre.idGenre WHERE Genre LIKE {$keyword}";
+    $querySql = $db->query($selectSql);
+    $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
+    return $resultSql;
+}
+function searchByAll(){
+    $db= dbConnect();
+    $keyword = "%".$_SESSION["keyword"]."%";
+    $keyword = $db->quote($keyword);
+    $selectSql = "SELECT idMusic,title,Genre,auteur FROM music INNER JOIN genre ON music.idGenre=genre.idGenre WHERE Genre LIKE {$keyword} OR title LIKE {$keyword} OR auteur LIKE {$keyword}";
     $querySql = $db->query($selectSql);
     $resultSql = $querySql->fetchAll(PDO::FETCH_ASSOC);
     return $resultSql;
