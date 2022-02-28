@@ -2,30 +2,15 @@
     <div class="themeChoose" id="allBoxes">
         <p>Choisissez le genre de musique</p>
         <div class="allBoxes">
-            <div class="themeBox button" data-value="Technologie" data-info="themeBoxTech">
+            <?php
+            foreach ($genre as $elem){ ?> 
+            <div class="themeBox button" data-value="<?php echo ($elem["Genre"]);?>" data-info="<?php echo($elem["Genre"]);?>">
                 <div class="themeBoxImg">
-                    <img src="../ressources/img/account_default.png" alt="" srcset="">
+                    <img src="../ressources/img/genre/<?php echo ($elem["img"]);?> " alt="" srcset="">
                 </div>
-                <p>Technologie</p>
+                <p><?php echo ($elem["Genre"]);?></p>
             </div>
-            <div class="themeBox button" data-value="Cinema" data-info="themeBoxCinema">
-                <div class="themeBoxImg">
-                    
-                </div>
-                <p>Cinéma</p>
+            <?php } ?>
             </div>
-            <div class="themeBox button" data-value="Gaming" data-info="themeBoxGaming">
-                <div class="themeBoxImg">
-                    
-                </div>
-                <p>Gaming</p>
-            </div>
-            <div class="themeBox button" data-value="Animes" data-info="themeBoxAnimes">
-                <div class="themeBoxImg">
-                    
-                </div>
-                <p>Animés</p>
-            </div>
-        </div>
     </div>
 </div>

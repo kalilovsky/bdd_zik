@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li>
-                <a class="button" href="disconnect.php" data-info="disconnect">
+                <a class="button" href="../model/disconnect.php" data-info="disconnect">
                     <span class="icon">
                         <ion-icon name="log-out-outline"></ion-icon>
 
@@ -101,7 +101,7 @@
                 </a>
             </li>
             <li>
-                <a class="button" href="disconnect.php" data-info="disconnect">
+                <a class="button" href="../model/disconnect.php" data-info="disconnect">
                     <span class="icon">
                         <ion-icon name="log-out-outline"></ion-icon>
 

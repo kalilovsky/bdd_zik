@@ -11,8 +11,22 @@
 </head>
 <body>
     <?php
-    require_once("./views/navigation.php");
-    require_once("./views/home.php");
+    
+    
+    require_once('./model/model.php');
+    if (isset($_POST["login"])){
+        verifUser();
+    }
+    if(isset($_POST["register"])){
+        registerUser();
+    }   
+    if (!isset($_SESSION)){
+        require_once("./views/login.php");
+    }else {
+        $genre = loadCategory();
+        require_once("./views/navigation.php");
+        require_once("./views/home.php");
+    }
     ?>    
 
 </body>
